@@ -216,7 +216,7 @@ st.markdown(
 | **Ehrliche Stimmzettel** | Wer die Regel kennt, kann taktisch zustimmen (zum Beispiel nur den aussichtsreichen Kandidaten); die Demo rechnet ehrlich. | `taktisch-waehlen-demo` |
 | **Exakte Regeln durch Aufzählung** | Alle C(m, k) Ausschüsse werden durchprobiert (bei 12 Kandidaten und 6 Sitzen 924); für große Wahlen braucht es ganzzahlige Programme oder Näherungen. | – |
 | **Gleichstand: kleinerer Buchstabe** | Bei Chamberlin–Courant entscheidet der Gleichstand mit, welcher Kandidat den „überflüssigen“ Sitz bekommt; echte Wahlen losen. | – |
-| **Erzeugte Lager** | Die Befunde der Reihen gelten für diese Zufallsmodelle; echte Wahlen haben andere Strukturen, und Verletzungen sind in zufälligen Instanzen selten. | – |
+| **Erzeugte Lager** | Die Befunde der Reihen gelten für diese Zufallsmodelle; echte Wahlen haben andere Strukturen, und Verletzungen sind in zufälligen Instanzen selten, außer bei der Zustimmungswahl mit deutlicher Mehrheit. | – |
 | **Modell, kein Befund über Wahlen** | Die Zahlen sagen, was die Rechnung für erzeugte oder eingegebene Stimmzettel liefert, nicht, wie ein bestimmter Verein wählen sollte. | – |
 """
 )

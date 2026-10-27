@@ -205,7 +205,7 @@ def verdict_violations(rows):
     jr = {rule: sum(r["jr"] for r in rows if r["rule"] == rule) / tot for rule in RULES}
     clean = [rule for rule in RULES if share[rule] == 0]
     text = (f"Über {tot:,} Instanzen".replace(",", ".") + f" (24 Wähler, 10 Kandidaten, 5 Sitze): EJR verletzt {C.RULE_SHORT['av']} in {pct(share['av'])}, Chamberlin–Courant in {pct(share['cc'])}, "
-            f"Seq. CC in {pct(share['seqcc'])}; JR verletzt nur die Zustimmungswahl ({pct(jr['av'])}). Nie verletzen EJR: {names(clean)}.")
+            f"Seq. CC in {pct(share['seqcc'])}; JR verletzt nur die Zustimmungswahl ({pct(jr['av'])}). Ohne EJR-Verletzung blieben in diesen Instanzen: {names(clean)}.")
     return "warning", text
 
 
@@ -219,7 +219,7 @@ def verdict_greedy(rows):
     equal_pav = sum(r["pav_equal"] for r in rows)
     equal_cc = sum(r["cc_equal"] for r in rows)
     text = (f"Über {runs:,} Instanzen".replace(",", ".") + f" erreicht das gierige PAV im Mittel {pct(pav_mean, 2)} der exakten PAV-Summe (schlechtester Fall {pct(worst_pav, 1)}, gleich in {equal_pav} Instanzen), "
-            f"das gierige Chamberlin–Courant {pct(cc_mean, 2)} der exakten Abdeckung (schlechtester Fall {pct(worst_cc, 1)}, gleich in {equal_cc}). Die Aufzählung lohnt sich selten.")
+            f"das gierige Chamberlin–Courant {pct(cc_mean, 2)} der exakten Abdeckung (schlechtester Fall {pct(worst_cc, 1)}, gleich in {equal_cc}). Schlechter als die exakte Regel ist die gierige in {runs - equal_pav} (PAV) bzw. {runs - equal_cc} (Chamberlin–Courant) Instanzen; ob sich die Aufzählung lohnt, hängt vom Rechenaufwand ab.")
     return "info", text
 
 

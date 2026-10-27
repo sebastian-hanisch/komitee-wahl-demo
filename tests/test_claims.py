@@ -51,7 +51,7 @@ def test_equal_shares_fills_only_part_of_the_seats(violations):
 def test_series_one_verdict_and_table(violations):
     kind, text = ev.verdict_violations(violations)
     assert text == ("Über 600 Instanzen (24 Wähler, 10 Kandidaten, 5 Sitze): EJR verletzt Zustimmungswahl in 10,3 %, Chamberlin–Courant in 0,0 %, Seq. CC in 0,0 %; "
-                    "JR verletzt nur die Zustimmungswahl (10,3 %). Nie verletzen EJR: Seq. PAV, PAV, Seq. CC, Chamberlin–Courant, Equal Shares und Equal Shares + Auffüllen.")
+                    "JR verletzt nur die Zustimmungswahl (10,3 %). Ohne EJR-Verletzung blieben in diesen Instanzen: Seq. PAV, PAV, Seq. CC, Chamberlin–Courant, Equal Shares und Equal Shares + Auffüllen.")
     t = ev.violation_table(violations)
     assert t[0] == {"Lager": "Zwei Lager", "Regel": "Zustimmungswahl", "JR verletzt": "56 von 200", "EJR verletzt": "56 von 200", "vertretene Wähler": "84,6 %", "PAV-Summe (Anteil am besten)": "93,95 %", "besetzte Sitze": "5,00"}
     assert t[5]["besetzte Sitze"] == "3,83" and t[12]["besetzte Sitze"] == "3,15" and t[7]["JR verletzt"] == "6 von 200"
@@ -77,7 +77,7 @@ def test_greedy_is_never_better_than_exact_and_improves_with_more_seats(greedy):
 def test_greedy_verdict_and_table(greedy):
     kind, text = ev.verdict_greedy(greedy)
     assert text == ("Über 800 Instanzen erreicht das gierige PAV im Mittel 99,94 % der exakten PAV-Summe (schlechtester Fall 97,0 %, gleich in 734 Instanzen), "
-                    "das gierige Chamberlin–Courant 99,66 % der exakten Abdeckung (schlechtester Fall 91,7 %, gleich in 738). Die Aufzählung lohnt sich selten.")
+                    "das gierige Chamberlin–Courant 99,66 % der exakten Abdeckung (schlechtester Fall 91,7 %, gleich in 738). Schlechter als die exakte Regel ist die gierige in 66 (PAV) bzw. 62 (Chamberlin–Courant) Instanzen; ob sich die Aufzählung lohnt, hängt vom Rechenaufwand ab.")
     assert ev.greedy_table(greedy)[0] == {"Sitze": 3, "Instanzen": 200, "Seq. PAV: Mittel": "99,89 %", "schlechtester Fall": "97,2 %", "gleich": "180 von 200",
                                           "Seq. CC: Mittel": "98,99 %", "schlechtester Fall ": "91,7 %", "gleich ": "155 von 200"}
 

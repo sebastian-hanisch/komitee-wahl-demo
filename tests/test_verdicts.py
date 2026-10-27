@@ -123,14 +123,14 @@ def _violation_rows(av=5, cc=1):
 def test_verdict_violations():
     kind, text = ev.verdict_violations(_violation_rows())
     assert kind == "warning" and text == ("Über 300 Instanzen (24 Wähler, 10 Kandidaten, 5 Sitze): EJR verletzt Zustimmungswahl in 5,0 %, Chamberlin–Courant in 1,0 %, Seq. CC in 0,0 %; "
-                                          "JR verletzt nur die Zustimmungswahl (5,0 %). Nie verletzen EJR: Seq. PAV, PAV, Seq. CC, Equal Shares und Equal Shares + Auffüllen.")
+                                          "JR verletzt nur die Zustimmungswahl (5,0 %). Ohne EJR-Verletzung blieben in diesen Instanzen: Seq. PAV, PAV, Seq. CC, Equal Shares und Equal Shares + Auffüllen.")
 
 
 def test_verdict_greedy():
     rows = [{"k": k, "runs": 100, "pav_mean": 0.999, "pav_min": 0.97, "pav_equal": 90, "cc_mean": 0.99, "cc_min": 0.9, "cc_equal": 80} for k in (3, 4)]
     kind, text = ev.verdict_greedy(rows)
     assert kind == "info" and text == ("Über 200 Instanzen erreicht das gierige PAV im Mittel 99,90 % der exakten PAV-Summe (schlechtester Fall 97,0 %, gleich in 180 Instanzen), "
-                                       "das gierige Chamberlin–Courant 99,00 % der exakten Abdeckung (schlechtester Fall 90,0 %, gleich in 160). Die Aufzählung lohnt sich selten.")
+                                       "das gierige Chamberlin–Courant 99,00 % der exakten Abdeckung (schlechtester Fall 90,0 %, gleich in 160). Schlechter als die exakte Regel ist die gierige in 20 (PAV) bzw. 40 (Chamberlin–Courant) Instanzen; ob sich die Aufzählung lohnt, hängt vom Rechenaufwand ab.")
 
 
 def test_verdict_examples():
